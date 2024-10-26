@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <%- include("header") %>
+    <ul class="product-list">
+        <% products.forEach(product => { %>
+            <li class="product">
+                <a href="/products/<%= product.id %>">
+                    <h4><%= product.name %></h4>
+                    <p style="font-size: 50px; margin: 0;"><%= product.character %></p>
+                    <p><%= product.price %>$</p>
+                    <p><%= categories.find(category => category.id === product.category_id).name %></p>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

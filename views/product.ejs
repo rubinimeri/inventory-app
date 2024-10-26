@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name.split(" ").slice(1).join(" ") %></title>
+</head>
+<body>
+    <%- include("header") %>
+    <h1><%= product.name.split(" ").slice(1).join(" ") %></h1>
+    <h2><%= product.character %></h2>
+    <p><%= product.price %></p>
+    <p><%= categories.find(category => category.id === product.category_id).name %></p>
+    <p><%= makes.find(make => make.id == product.make_id).name %></p>
+</body>
+</html>
