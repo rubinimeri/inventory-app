@@ -3,7 +3,7 @@ const db = require("../db/queries");
 async function productsGet(req, res) {
     const products = await db.getAllProducts();
     const categories = await db.getAllCategories();
-    res.render("products", { products: products, categories: categories});
+    res.render("products/products", { products: products, categories: categories});
 }
 
 async function productGet(req, res) {
@@ -12,7 +12,7 @@ async function productGet(req, res) {
     const categories = await db.getAllCategories();
     const makes = await db.getAllMakes();
 
-    res.render("product", { 
+    res.render("products/product", { 
         product: product, 
         categories: categories, 
         makes: makes 
