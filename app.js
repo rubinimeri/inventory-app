@@ -1,5 +1,8 @@
 const express = require("express");
 const path = require("node:path");
+const indexRouter = require("./routes/indexRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
+const productsRouter = require("./routes/productsRouter");
 require("dotenv").config();
 
 const app = express();
@@ -9,6 +12,8 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => res.send("Inventory App"));
+app.use("/", indexRouter);
+app.use("/categories", categoriesRouter);
+app.use("/products", productsRouter);
 
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}!`));
