@@ -6,11 +6,18 @@ async function productsGet(req, res) {
 
     if (!category) {
         const products = await db.getAllProducts();
-        res.render("products/products", { products: products, categories: categories});
+        return res.render("products/products", { products: products, categories: categories, selectedCategory: null, selectedCategories: []});
     }
 
-    const filteredProducts = await db.getProductsByCategory(category);
-    res.render("products/products", { products: filteredProducts, categories: categories});
+    if(Array.isArray(category)) {
+        const SQL = `(${category.map(cat => `'${cat}'`).join(',')})`;
+        const products = await db.getProductsByCategories(SQL);
+        console.log(category);
+        return res.render("products/products", { products: products, categories: categories, selectedCategories: category, selectedCategory: null});
+    }
+
+    const products = await db.getProductsByCategory(category);
+    res.render("products/products", { products: products, categories: categories, selectedCategory: category, selectedCategories: []});
 }
 
 async function productGet(req, res) {

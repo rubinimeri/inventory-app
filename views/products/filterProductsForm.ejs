@@ -1,0 +1,24 @@
+<form action="/products" method="GET">
+    <% categories.forEach(category => { %>
+        <% if(selectedCategories.find(selCategory => selCategory === category.name)) { %>
+                <input checked type="checkbox"
+                id="<%= category.id %>"
+                name="category" value="<%= category.name %>">
+                <label for="<%= category.id %>"><%= category.name %></label>
+                <br>
+        <% } else if (selectedCategory === category.name) { %>
+                <input checked type="checkbox"
+                       id="<%= category.id %>"
+                       name="category" value="<%= category.name %>">
+                <label for="<%= category.id %>"><%= category.name %></label>
+                <br>
+        <% } else { %>
+                <input type="checkbox"
+                       id="<%= category.id %>"
+                       name="category" value="<%= category.name %>">
+                <label for="<%= category.id %>"><%= category.name %></label>
+                <br>
+        <% } %>
+    <% }) %>
+    <button type="submit">Filter</button>
+</form>
