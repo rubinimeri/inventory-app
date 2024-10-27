@@ -9,6 +9,11 @@ async function addCategory(category) {
     await pool.query(`INSERT INTO categories (name) VALUES ('${category}')`)
 }
 
+async function deleteCategory(categoryId) {
+    await pool.query(`DELETE FROM categories WHERE id = ${categoryId}`);
+    await pool.query(`UPDATE products SET category_id = 0 WHERE category_id = ${categoryId}`);
+}
+
 async function getAllMakes() {
     const { rows } = await pool.query("SELECT * FROM makes");
     return rows;
@@ -60,6 +65,7 @@ async function deleteProduct(productId) {
 module.exports = {
     getAllCategories,
     addCategory,
+    deleteCategory,
     getAllProducts,
     getAllMakes,
     getProduct,

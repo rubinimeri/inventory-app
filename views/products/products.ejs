@@ -19,7 +19,9 @@
                     <h4><%= product.name %></h4>
                     <p style="font-size: 50px; margin: 0;"><%= product.character %></p>
                     <p><%= product.price %>$</p>
-                    <p><%= categories.find(category => category.id === product.category_id).name %></p>
+                    <% if(categories.find(category => category.id === product.category_id)) { %>
+                        <p><%=categories.find(category => category.id === product.category_id).name%></p>
+                    <% } %>
                 </a>
             </li>
         <% }) %>

@@ -10,7 +10,9 @@
     <h1><%= product.name.split(" ").slice(1).join(" ") %></h1>
     <h2><%= product.character %></h2>
     <p><%= product.price %></p>
-    <p><%= categories.find(category => category.id === product.category_id).name %></p>
+    <% if(categories.find(category => category.id === product.category_id)) { %>
+        <p><%=categories.find(category => category.id === product.category_id).name%></p>
+    <% } %>
     <p><%= makes.find(make => make.id == product.make_id).name %></p>
     <a href="/products/<%= product.id %>/edit">Edit</a>
     <form action="/products/<%= product.id %>/delete" method="POST">
