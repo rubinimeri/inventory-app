@@ -20,9 +20,19 @@ async function getProduct(productId) {
     return product;
 }
 
+async function updateProduct(productId, product) {
+    await pool.query(`
+        UPDATE products 
+        SET name = '${product.name}', character = '${product.character}', 
+        price = ${parseInt(product.price)}, category_id = ${parseInt(product.category)},
+        make_id = ${parseInt(product.make)}
+        WHERE id = ${productId};`)
+}
+
 module.exports = {
     getAllCategories,
     getAllProducts,
     getAllMakes,
-    getProduct
+    getProduct,
+    updateProduct
 }

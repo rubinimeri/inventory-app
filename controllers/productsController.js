@@ -19,7 +19,29 @@ async function productGet(req, res) {
     });
 }
 
+async function editProductGet(req, res) {
+    const { productId } = req.params;
+    const product = await db.getProduct(productId);
+    const categories = await db.getAllCategories();
+    const makes = await db.getAllMakes();
+
+    res.render("products/editProduct", { 
+        product: product, 
+        categories: categories, 
+        makes: makes 
+    });
+}
+
+async function editProductPost(req, res) {
+    const { productId } = req.params;
+    const product = { name, character, price, category, make } = req.body;
+    await db.updateProduct(parseInt(productId), product);
+    res.redirect(`/products/${productId}`);
+}
+
 module.exports = {
     productsGet,
     productGet,
+    editProductGet,
+    editProductPost,
 }
