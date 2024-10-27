@@ -15,6 +15,11 @@ async function getAllProducts() {
     return rows;
 }
 
+async  function getProductsByCategory(category) {
+    const { rows } = await pool.query(`SELECT * FROM products INNER JOIN categories ON categories.id = products.category_id WHERE categories.name = '${category}'`);
+    return rows;
+}
+
 async function getProduct(productId) {
     const { rows: [product] } = await pool.query(`SELECT * FROM products WHERE id = ${productId}`);
     return product;
@@ -45,5 +50,6 @@ module.exports = {
     getAllMakes,
     getProduct,
     updateProduct,
-    addProduct
+    addProduct,
+    getProductsByCategory
 }

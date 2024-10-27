@@ -1,9 +1,16 @@
 const db = require("../db/queries");
 
 async function productsGet(req, res) {
-    const products = await db.getAllProducts();
+    const { category } = req.query;
     const categories = await db.getAllCategories();
-    res.render("products/products", { products: products, categories: categories});
+
+    if (!category) {
+        const products = await db.getAllProducts();
+        res.render("products/products", { products: products, categories: categories});
+    }
+
+    const filteredProducts = await db.getProductsByCategory(category);
+    res.render("products/products", { products: filteredProducts, categories: categories});
 }
 
 async function productGet(req, res) {
@@ -48,7 +55,6 @@ async function createProductGet(req, res) {
 
 async function createProductPost(req, res) {
     const product = { name, character, price, category, make } = req.body;
-    console.log(product)
     await db.addProduct(product);
     res.redirect('/products');
 }

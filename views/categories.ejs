@@ -9,7 +9,7 @@
     <%- include("header") %>
     <ul>
         <% categories.forEach(category => { %>
-            <li><a href="#"><%= category.name %></a></li>
+            <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
         <% }); %>
     </ul>
 </body>
