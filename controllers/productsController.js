@@ -66,11 +66,18 @@ async function createProductPost(req, res) {
     res.redirect('/products');
 }
 
+async function deleteProductPost(req, res) {
+    const { productId } = req.params;
+    await db.deleteProduct(parseInt(productId));
+    res.redirect('/products');
+}
+
 module.exports = {
     productsGet,
     productGet,
     editProductGet,
     editProductPost,
     createProductGet,
-    createProductPost
+    createProductPost,
+    deleteProductPost
 }

@@ -53,6 +53,10 @@ async function addProduct(product) {
         `)
 }
 
+async function deleteProduct(productId) {
+    await pool.query(`DELETE FROM products WHERE id = ${productId}`);
+}
+
 module.exports = {
     getAllCategories,
     addCategory,
@@ -61,6 +65,7 @@ module.exports = {
     getProduct,
     updateProduct,
     addProduct,
+    deleteProduct,
     getProductsByCategory,
     getProductsByCategories
 }
