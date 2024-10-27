@@ -5,6 +5,10 @@ async function getAllCategories() {
     return rows;
 }
 
+async function addCategory(category) {
+    await pool.query(`INSERT INTO categories (name) VALUES ('${category}')`)
+}
+
 async function getAllMakes() {
     const { rows } = await pool.query("SELECT * FROM makes");
     return rows;
@@ -46,6 +50,7 @@ async function addProduct(product) {
 
 module.exports = {
     getAllCategories,
+    addCategory,
     getAllProducts,
     getAllMakes,
     getProduct,

@@ -6,7 +6,8 @@
     <title>Categories</title>
 </head>
 <body>
-    <%- include("header") %>
+    <%- include("../header") %>
+    <a href="/categories/add">Add Category</a>
     <ul>
         <% categories.forEach(category => { %>
             <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>

@@ -6,9 +6,17 @@ async function categoriesGet(req, res) {
 }
 
 async function addCategoryGet(req, res) {
-    res.render("categories/categories");
+    res.render("categories/addCategory");
+}
+
+async function addCategoryPost(req, res) {
+    const { category } = req.body;
+    await db.addCategory(category);
+    res.redirect('/categories');
 }
 
 module.exports = {
-    categoriesGet
+    categoriesGet,
+    addCategoryGet,
+    addCategoryPost
 }
