@@ -32,7 +32,7 @@ async function sql() {
     
     const productsSQL =
         filteredEmojis.map(emoji => 
-            `((SELECT id FROM categories WHERE name = '${emoji.subGroup}'), '${emoji.unicodeName}', ${randomPrice()}, '${emoji.character}', ${randomInt()})`)
+            `((SELECT id FROM categories WHERE name = '${emoji.subGroup}'), '${emoji.unicodeName.split(" ").slice(1).map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(" ")}', ${randomPrice()}, '${emoji.character}', ${randomInt()})`)
             .join(`,\n`);
     
     const SQL = `
