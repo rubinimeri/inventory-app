@@ -39,9 +39,25 @@ async function editProductPost(req, res) {
     res.redirect(`/products/${productId}`);
 }
 
+async function createProductGet(req, res) {
+    const categories = await db.getAllCategories();
+    const makes = await db.getAllMakes();
+
+    res.render("products/addProduct", {categories: categories, makes: makes});
+}
+
+async function createProductPost(req, res) {
+    const product = { name, character, price, category, make } = req.body;
+    console.log(product)
+    await db.addProduct(product);
+    res.redirect('/products');
+}
+
 module.exports = {
     productsGet,
     productGet,
     editProductGet,
     editProductPost,
+    createProductGet,
+    createProductPost
 }

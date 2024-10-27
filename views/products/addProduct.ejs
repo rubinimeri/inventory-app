@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Product </title>
+</head>
+<body>
+    <h1>Add product</h1>
+    <form action="/products/add" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="character">Character:</label>
+            <input type="text" name="character">
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" name="price">
+        </div>
+        <div>
+            <label for="category">Category</label>
+            <select name="category" id="category">
+                <% categories.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div>
+            <label for="make">Make</label>
+            <select name="make" id="make">
+                <% makes.forEach(make => { %>
+                    <option value="<%= make.id %>"><%= make.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

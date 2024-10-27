@@ -29,10 +29,21 @@ async function updateProduct(productId, product) {
         WHERE id = ${productId};`)
 }
 
+async function addProduct(product) {
+    await pool.query(`
+        INSERT INTO products (name, character, price, category_id, make_id)
+        VALUES ('
+        ${product.name}', '${product.character}', 
+        ${parseInt(product.price)}, ${parseInt(product.category)},
+        ${parseInt(product.make)})
+        `)
+}
+
 module.exports = {
     getAllCategories,
     getAllProducts,
     getAllMakes,
     getProduct,
-    updateProduct
+    updateProduct,
+    addProduct
 }
