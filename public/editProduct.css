@@ -1,0 +1,31 @@
+body {
+    color: white;
+}
+
+main {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form button {
+    border-radius: 1rem;
+    text-decoration: none;
+    background-color: #0f172a;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    border: none;
+}

@@ -1,0 +1,44 @@
+body {
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    align-items: center;
+    gap: 2rem;
+}
+
+main h1 {
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+main ul {
+    display: flex;
+    gap: 5rem;
+    list-style: none;
+    padding: 0;
+}
+
+main ul li {
+    font-weight: 700;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+main ul button {
+    border-radius: 1rem;
+    background-color: red;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+a {
+    color: white;
+}

@@ -1,0 +1,45 @@
+body {
+    color: white;
+}
+
+main {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    gap: 1rem;
+}
+
+h2 {
+    font-size: 6rem;
+}
+
+main a {
+    color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+    background-color: #0f172a;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+
+button {
+    border-radius: 1rem;
+    text-decoration: none;
+    background-color: #0f172a;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}

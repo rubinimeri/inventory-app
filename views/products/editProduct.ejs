@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/editProduct.css">
+</head>
+<body>
+    <%- include("../header") %>
+    <main>
+        <h1>Edit Product</h1>
+        <form action="/products/<%= product.id %>/edit" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" value="<%= product.name %>">
+            </div>
+            <div>
+                <label for="character">Character:</label>
+                <input type="text" name="character" value="<%= product.character %>">
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" name="price" value="<%= product.price %>">
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <% categories.forEach(category => { %>
+                        <% if(category.id == product.category_id) { %>
+                            <option selected value="<%= category.id %>"><%= category.name %></option>
+                        <% } else { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+            </div>
+            <div>
+                <label for="make">Make</label>
+                <select name="make" id="make">
+                    <% makes.forEach(make => { %>
+                        <% if(make.id == product.make_id) { %>
+                            <option selected value="<%= make.id %>"><%= make.name %></option>
+                        <% } else { %>
+                            <option value="<%= make.id %>"><%= make.name %></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+            </div>
+            <button type="submit">Save</button>
+        </form>
+    </main>
+</body>
+</html>
