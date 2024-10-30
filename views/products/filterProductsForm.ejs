@@ -1,23 +1,32 @@
 <form action="/products" method="GET">
     <% categories.forEach(category => { %>
         <% if(selectedCategories.find(selCategory => selCategory === category.name)) { %>
+            <div>
                 <input checked type="checkbox"
-                id="<%= category.id %>"
-                name="category" value="<%= category.name %>">
-                <label for="<%= category.id %>"><%= category.name %></label>
-                <br>
+                       id="<%= category.id %>"
+                       name="category" value="<%= category.name %>">
+                <label for="<%= category.id %>">
+                    <%= category.name.charAt(0).toUpperCase() + category.name.slice(1) %>
+                </label>
+            </div>
         <% } else if (selectedCategory === category.name) { %>
-                <input checked type="checkbox"
-                       id="<%= category.id %>"
-                       name="category" value="<%= category.name %>">
-                <label for="<%= category.id %>"><%= category.name %></label>
-                <br>
+                <div>
+                    <input checked type="checkbox"
+                           id="<%= category.id %>"
+                           name="category" value="<%= category.name %>">
+                    <label for="<%= category.id %>">
+                        <%= category.name.charAt(0).toUpperCase() + category.name.slice(1) %>
+                    </label>
+                </div>
         <% } else { %>
-                <input type="checkbox"
-                       id="<%= category.id %>"
-                       name="category" value="<%= category.name %>">
-                <label for="<%= category.id %>"><%= category.name %></label>
-                <br>
+                <div>
+                    <input type="checkbox"
+                          id="<%= category.id %>"
+                          name="category" value="<%= category.name %>">
+                    <label for="<%= category.id %>">
+                        <%= category.name.charAt(0).toUpperCase() + category.name.slice(1) %>
+                    </label>
+                </div>
         <% } %>
     <% }) %>
     <button type="submit">Filter</button>

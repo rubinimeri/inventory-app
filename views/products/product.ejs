@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= product.name.split(" ").slice(1).join(" ") %></title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/product.css">
 </head>
 <body>
     <%- include("../header") %>
-    <h1><%= product.name.split(" ").slice(1).join(" ") %></h1>
-    <h2><%= product.character %></h2>
-    <p><%= product.price %></p>
-    <% if(categories.find(category => category.id === product.category_id)) { %>
-        <p><%=categories.find(category => category.id === product.category_id).name%></p>
-    <% } %>
-    <p><%= makes.find(make => make.id == product.make_id).name %></p>
-    <a href="/products/<%= product.id %>/edit">Edit</a>
-    <form action="/products/<%= product.id %>/delete" method="POST">
-        <button type="submit">Delete</button>
-    </form>
+    <main>
+        <div class="product-title">
+            <h1><%= product.name %></h1>
+            <h2><%= product.character %></h2>
+        </div>
+        <div class="info">
+            <p><b>Price</b> - <%= product.price %>$</p>
+            <% if(categories.find(category => category.id === product.category_id)) { %>
+                <p><b>Category</b> - <%= categories.find(category => category.id === product.category_id).name %></p>
+            <% } %>
+            <p><b>Make</b> - <%= makes.find(make => make.id == product.make_id).name %></p>
+        </div>
+        <div class="buttons">
+            <a href="/products/<%= product.id %>/edit">Edit</a>
+            <form action="/products/<%= product.id %>/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

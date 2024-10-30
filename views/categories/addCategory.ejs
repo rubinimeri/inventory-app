@@ -5,15 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Product</title>
+    <title>Add Category</title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/addCategory.css">
 </head>
 <body>
-    <h1>Add Category</h1>
-    <form action="/categories/add" method="POST">
-        <label for="category">Name:</label>
-        <input type="text" name="category" id="category">
-        <br>
-        <button type="submit">Add</button>
-    </form>
+    <%- include("../header") %>
+    <main>
+        <h1>Add Category</h1>
+        <form action="/categories/add" method="POST">
+            <label for="category">Name:</label>
+            <input type="text" name="category" id="category">
+            <br>
+            <button type="submit">Add</button>
+        </form>
+    </main>
 </body>
 </html>

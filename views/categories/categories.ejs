@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/categories.css">
 </head>
 <body>
     <%- include("../header") %>
-    <a href="/categories/add">Add Category</a>
-    <ul>
-        <% categories.forEach(category => { %>
-            <li>
-                <a href="/products?category=<%= category.name %>"><%= category.name %></a>
-                <form action="/categories/delete/<%= category.id %>" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        <% }); %>
-    </ul>
+    <main>
+        <h1>Categories</h1>
+        <a href="/categories/add">Add Category</a>
+        <ul>
+            <% categories.forEach(category => { %>
+                <li>
+                    <a href="/products?category=<%= category.name %>"><%= category.name.charAt(0).toUpperCase() + category.name.slice(1) %></a>
+                    <form action="/categories/delete/<%= category.id %>" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>

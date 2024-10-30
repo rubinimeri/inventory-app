@@ -4,27 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/products.css">
 </head>
 <body>
     <%- include("../header") %>
-    <a href="/products/add">Add Product</a>
-    <%- include("filterProductsForm", {
+    <h1 class="title">Products</h1>
+    <main>
+        <div class="categories">
+            <a href="/products/add">Add Product</a>
+            <h3>Categories</h3>
+            <%- include("filterProductsForm", {
             categories: categories,
             selectedCategories: selectedCategories,
             selectedCategory: selectedCategory }) %>
-    <ul class="product-list">
-        <% products.forEach(product => { %>
-            <li class="product">
-                <a href="/products/<%= product.id %>">
-                    <h4><%= product.name %></h4>
-                    <p style="font-size: 50px; margin: 0;"><%= product.character %></p>
-                    <p><%= product.price %>$</p>
-                    <% if(categories.find(category => category.id === product.category_id)) { %>
-                        <p><%=categories.find(category => category.id === product.category_id).name%></p>
-                    <% } %>
-                </a>
-            </li>
-        <% }) %>
-    </ul>
+        </div>
+        <ul class="product-list">
+            <% products.forEach(product => { %>
+                <li class="product">
+                    <a href="/products/<%= product.id %>">
+                        <h4><%= product.name %></h4>
+                        <p class="emoji"><%= product.character %></p>
+                        <p><%= product.price %>$</p>
+                        <% if(categories.find(category => category.id === product.category_id)) { %>
+                        <p><%= categories.find(category => category.id === product.category_id).name %></p>
+                        <% } %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </main>
 </body>
 </html>
