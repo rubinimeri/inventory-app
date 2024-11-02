@@ -19,5 +19,3 @@ app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}!`));
-
-debugger
